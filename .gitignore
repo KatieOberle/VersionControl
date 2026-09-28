@@ -1,0 +1,8 @@
+# Local credentials
+LAMPAPI/contacts.php
+
+# Operating system files
+.DS_Store
+
+# Local environment files
+.env
