@@ -1,6 +1,15 @@
 # VersionControl
 This repo is for COP4331 Assignment 1: Version Control based on the completed COLORS lab.
 
+# UML Diagram Assignment
+AI Disclosure:
+
+ChatGPT v5.6
+Use: Diagram PUML File Creation
+Scope: Prompted for initial PUML code based on provided ZIP of existing COLORS repo. Minor
+fixes in titles and features were necessary, but the tool was quite useful overall.
+
+
 # COLORS Lab Overview
 The user has access to login to a website that allows them to register colors to their account and search for them afterwards.
 The search feature supports partial searches. Colors are saved even when the user logs out and logs back in.

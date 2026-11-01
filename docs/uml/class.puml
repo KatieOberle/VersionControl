@@ -1,0 +1,94 @@
+@startuml
+title COLORS Web Application - Class Diagram
+
+skinparam classAttributeIconSize 0
+
+class User <<entity>> {
+    - userId : int
+    - firstName : string
+    - lastName : string
+    - login : string
+    - password : string
+}
+
+class Color <<entity>> {
+    - userId : int
+    - name : string
+}
+
+class ColorApplication <<JavaScript>> {
+    - userId : int
+    - firstName : string
+    - lastName : string
+
+    + doLogin() : void
+    + saveCookie() : void
+    + readCookie() : void
+    + doLogout() : void
+    + addColor() : void
+    + searchColor() : void
+}
+
+class LoginAPI <<PHP>> {
+    + getRequestInfo() : JSON
+    + authenticateUser() : User
+    + returnWithInfo() : JSON
+    + returnWithError() : JSON
+}
+
+class AddColorAPI <<PHP>> {
+    + getRequestInfo() : JSON
+    + addColor() : void
+    + returnWithError() : JSON
+}
+
+class SearchColorsAPI <<PHP>> {
+    + getRequestInfo() : JSON
+    + searchColors() : List
+    + returnWithInfo() : JSON
+    + returnWithError() : JSON
+}
+
+class Database <<MySQL>> {
+    + connect() : Connection
+    + executeQuery() : ResultSet
+    + close() : void
+}
+
+User "1" -- "0..*" Color : owns
+
+ColorApplication ..> LoginAPI : sends login request
+ColorApplication ..> AddColorAPI : sends add request
+ColorApplication ..> SearchColorsAPI : sends search request
+
+LoginAPI --> Database : queries Users
+AddColorAPI --> Database : inserts into Colors
+SearchColorsAPI --> Database : queries Colors
+
+note right of User
+  Represents a record
+  in the Users table.
+end note
+
+note right of Color
+  Represents a record
+  in the Colors table.
+
+  Each color is associated
+  with a user ID.
+end note
+
+note bottom of ColorApplication
+  Implemented in js/code.js.
+
+  Browser cookie stores
+  login session information.
+end note
+
+note bottom of Database
+  Database connection is
+  established through
+  contacts.php.
+end note
+
+@enduml
