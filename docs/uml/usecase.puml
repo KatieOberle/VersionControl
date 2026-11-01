@@ -1,0 +1,50 @@
+
+@startuml
+title COLORS Web Application - Use Case Diagram
+
+left to right direction
+
+actor "User" as User
+
+rectangle "COLORS Web Application" {
+
+    usecase "Log In" as Login
+    usecase "Validate Credentials" as Validate
+    usecase "Access Color Page" as Access
+    usecase "Add Color" as Add
+    usecase "Search Colors" as Search
+    usecase "View Search Results" as Results
+    usecase "Log Out" as Logout
+    usecase "Maintain Login Session" as Session
+}
+
+User --> Login
+User --> Add
+User --> Search
+User --> Results
+User --> Logout
+
+Login ..> Validate : Validate
+Login ..> Session : Session
+Login ..> Access : Access
+
+Search ..> Results : Results
+
+note right of Add
+  A color is associated
+  with the user's ID.
+end note
+
+note right of Search
+  Supports partial color
+  name matching.
+  Results are user-specific.
+end note
+
+note bottom of Session
+  Login information is stored
+  in a browser cookie.
+  Cookie expiration: 20 minutes.
+end note
+
+@enduml
