@@ -1,5 +1,6 @@
 # Local credentials
 LAMPAPI/contacts.php
+node_modules/
 
 # Operating system files
 .DS_Store
